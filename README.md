@@ -1,56 +1,47 @@
-Racing Survival (3 Players)
-Dự án này là một trò chơi đua xe nhiều người chơi (tối đa 3 người) được xây dựng bằng ngôn ngữ lập trình Java. Trò chơi áp dụng kiến trúc Server-Client, sử dụng giao thức TCP để gửi các lệnh điều khiển và giao thức UDP để truyền tải trạng thái trò chơi theo thời gian thực nhằm đảm bảo độ trễ thấp.
-🎮 Tính năng chính
-Đua xe Multiplayer: Hỗ trợ tối đa 3 người chơi cùng lúc trong một phòng đua.
+<h1 align="center">🏎️ Racing Survival (3 Players) 🏁</h1>
 
-Cơ chế vật lý & va chạm:
+<div align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" alt="Java Badge"/>
+  <img src="https://img.shields.io/badge/Swing-GUI-blue?style=for-the-badge" alt="Swing Badge"/>
+  <img src="https://img.shields.io/badge/Socket-TCP%20%7C%20UDP-success?style=for-the-badge" alt="Socket Badge"/>
+</div>
 
-Va chạm với chướng ngại vật (vật cản màu đỏ) hoặc đâm tường sẽ bị loại khỏi cuộc đua.
+<br/>
 
-Va chạm giữa các xe: Xe lấn làn sẽ bị loại, xe đi đúng làn bị va chạm sẽ bị phạt làm chậm tốc độ trong 3 giây.
+> **Racing Survival** là một tựa game đua xe sinh tồn nhiều người chơi (tối đa 3 người) được phát triển hoàn toàn bằng **Java**. Trò chơi kết hợp kiến trúc Server-Client mạnh mẽ, xử lý va chạm thời gian thực và đồng bộ hóa mạng mượt mà để mang lại trải nghiệm đua xe đầy kịch tính!
 
-Hệ thống đồng bộ: Sử dụng UDP để phát sóng (broadcast) trạng thái của tất cả các xe và chướng ngại vật đến mọi Client cứ sau mỗi 50ms.
+---
 
-Giao diện đồ họa (GUI): Xây dựng bằng thư viện Swing, hiển thị tốc độ, trạng thái "Choáng" (Stun), và bảng kết quả khi kết thúc.
+## ✨ Tính năng nổi bật
 
-Quản lý phòng chờ: Người chơi cần nhấn nút "READY" để bắt đầu ván đấu khi đủ số lượng thành viên.
+* 🎮 **Multiplayer Real-time**: Hỗ trợ tối đa 3 tay đua cùng tranh tài trong một phòng chơi.
+* ⚡ **Giao thức mạng tối ưu**: 
+  * Sử dụng **TCP** để truyền lệnh điều khiển và quản lý phòng chờ (đảm bảo độ tin cậy).
+  * Sử dụng **UDP** để phát sóng (broadcast) trạng thái game ở tốc độ cao (50ms/lần), giảm thiểu độ trễ.
+* 💥 **Cơ chế vật lý & Sinh tồn**:
+  * Đâm vào chướng ngại vật (màu đỏ) hoặc vách đường: **Loại trực tiếp!** 💀
+  * Cơ chế tạt đầu: Xe lấn làn sẽ bị loại, xe đi đúng làn nếu bị đâm sẽ rơi vào trạng thái **Choáng (Stun)** và giảm tốc độ trong 3 giây.
+* 🏁 **Phòng chờ (Lobby)**: Hệ thống sẵn sàng (Ready) thông minh, game chỉ bắt đầu khi tất cả tay đua đã vào vị trí.
 
-🛠 Công nghệ sử dụng
-Ngôn ngữ: Java (JDK 17).
+---
 
-Giao tiếp mạng: Java Networking (Socket, ServerSocket, DatagramSocket).
+## 🛠️ Công nghệ & Kiến trúc
 
-Đồ họa: Java Swing & AWT (Graphics2D).
+| Thành phần | Công nghệ sử dụng | Chức năng chính |
+| :--- | :--- | :--- |
+| **Ngôn ngữ** | `Java (JDK 17+)` | Core logic, xử lý luồng (Multithreading) |
+| **Đồ họa** | `Java Swing & AWT` | Render giao diện, xe, hiệu ứng bằng `Graphics2D` |
+| **Mạng** | `Socket`, `DatagramSocket` | Giao tiếp mạng Server - Client |
+| **Đồng bộ** | `UDP Broadcast` | Đồng bộ hóa `GameState` tới toàn bộ Client |
 
-Quản lý tiến trình: Multi-threading (mỗi Client một luồng xử lý riêng trên Server).
+---
 
-📂 Cấu trúc mã nguồn
-GameServer.java: Xử lý logic trò chơi, tính toán va chạm, quản lý danh sách người chơi và phát sóng trạng thái.
+## 📂 Cấu trúc dự án
 
-GameClientGUI.java: Giao diện người dùng, tiếp nhận input từ bàn phím và hiển thị hình ảnh trò chơi.
-
-CarState.java: Lưu trữ thông tin chi tiết của từng xe (tọa độ x, y, tốc độ, trạng thái sống/chết).
-
-GameState.java: Chứa toàn bộ "ảnh chụp" của trò chơi tại một thời điểm để đồng bộ giữa Server và Client.
-
-Obstacle.java: Định nghĩa các chướng ngại vật trên đường đua.
-
-🚀 Hướng dẫn chạy trò chơi
-Cấu hình IP:
-
-Mở file GameServer.java và GameClientGUI.java.
-
-Tìm biến SERVER_IP (Server) và SERVER_HOST (Client), thay đổi giá trị 10.241.75.71 thành địa chỉ IP máy tính của bạn nếu chạy trong mạng LAN hoặc localhost nếu chạy trên cùng một máy.
-
-Chạy Server: Khởi chạy class GameServer.java trước để mở cổng lắng nghe (Port: 12345).
-
-Chạy Client: Khởi chạy class GameClientGUI.java (mở tối đa 3 cửa sổ tương ứng với 3 người chơi).
-
-🕹 Cách điều khiển
-Phím Lên (↑): Tăng tốc.
-
-Phím Xuống (↓): Phanh/Giảm tốc.
-
-Phím Trái/Phải (←/→): Di chuyển sang trái hoặc phải để tránh vật cản hoặc vượt xe khác.
-
-Mục tiêu: Vượt qua vạch đích tại tọa độ 4000.0 hoặc trở thành người duy nhất còn sống sót trên đường đua.
+```text
+📦 src/racinggame
+ ┣ 📜 GameServer.java      # Máy chủ: Xử lý logic, va chạm, quản lý Client
+ ┣ 📜 GameClientGUI.java   # Máy khách: Giao diện game, bắt sự kiện bàn phím
+ ┣ 📜 GameState.java       # Lưu trữ "ảnh chụp" toàn bộ trạng thái màn chơi
+ ┣ 📜 CarState.java        # Quản lý tọa độ, tốc độ, trạng thái sống/chết của xe
+ ┗ 📜 Obstacle.java        # Định nghĩa các chướng ngại vật sinh ra ngẫu nhiên
