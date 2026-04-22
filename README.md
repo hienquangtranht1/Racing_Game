@@ -36,6 +36,45 @@
 
 ---
 
+## 🚀 Hướng dẫn cài đặt & Chạy game
+
+### 1. Chuẩn bị (Prerequisites)
+* Đảm bảo máy tính của bạn đã cài đặt **Java Development Kit (JDK) 8** trở lên.
+
+### 2. Cấu hình Mạng (Tùy chọn)
+Mặc định game được cấu hình chạy trên cùng một máy (`localhost`). Nếu muốn chơi qua mạng LAN, bạn cần sửa đổi IP:
+* Mở `GameServer.java` và `GameClientGUI.java`.
+* Tìm biến `SERVER_IP` (Server) và `SERVER_HOST` (Client), thay đổi thành địa chỉ IP IPv4 của máy chủ (VD: `192.168.1.x`).
+
+### 3. Khởi chạy
+Mở Terminal/Command Prompt hoặc chạy trực tiếp từ IDE (NetBeans, IntelliJ, Eclipse):
+
+**Bước 1: Chạy Server**
+```bash
+# Khởi động máy chủ trước để mở cổng lắng nghe (Port: 12345)
+java racinggame.GameServer
+```
+
+**Bước 2: Chạy Client (Người chơi)**
+```bash
+# Khởi chạy cửa sổ game (Mở tối đa 3 lần cho 3 người chơi)
+java racinggame.GameClientGUI
+```
+
+---
+
+## 🕹️ Cách thức điều khiển
+
+Sử dụng các phím mũi tên trên bàn phím để điều khiển siêu xe của bạn:
+
+| Phím | Hành động | Mô tả |
+| :---: | :--- | :--- |
+| **`↑`** | **Tăng tốc** | Nhấn giữ để tăng vận tốc tiến về đích. |
+| **`↓`** | **Giảm tốc/Phanh** | Hãm phanh để né tránh chướng ngại vật an toàn. |
+| **`←` / `→`** | **Chuyển làn** | Đánh lái sang trái hoặc phải (cẩn thận va chạm!). |
+
+🏆 **Mục tiêu chiến thắng:** Hãy là người đầu tiên cán đích ở mốc **4000.0** hoặc trở thành **kẻ sống sót cuối cùng** trên đường đua tử thần này!
+
 ## 📂 Cấu trúc dự án
 
 ```text
@@ -45,3 +84,5 @@
  ┣ 📜 GameState.java       # Lưu trữ "ảnh chụp" toàn bộ trạng thái màn chơi
  ┣ 📜 CarState.java        # Quản lý tọa độ, tốc độ, trạng thái sống/chết của xe
  ┗ 📜 Obstacle.java        # Định nghĩa các chướng ngại vật sinh ra ngẫu nhiên
+
+
