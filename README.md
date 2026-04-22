@@ -36,6 +36,16 @@
 
 ---
 
+## 📂 Cấu trúc dự án
+
+```text
+📦 src/racinggame
+ ┣ 📜 GameServer.java      # Máy chủ: Xử lý logic, va chạm, quản lý Client
+ ┣ 📜 GameClientGUI.java   # Máy khách: Giao diện game, bắt sự kiện bàn phím
+ ┣ 📜 GameState.java       # Lưu trữ "ảnh chụp" toàn bộ trạng thái màn chơi
+ ┣ 📜 CarState.java        # Quản lý tọa độ, tốc độ, trạng thái sống/chết của xe
+ ┗ 📜 Obstacle.java        # Định nghĩa các chướng ngại vật sinh ra ngẫu nhiên
+```
 ## 🚀 Hướng dẫn cài đặt & Chạy game
 
 ### 1. Chuẩn bị (Prerequisites)
@@ -74,15 +84,4 @@ Sử dụng các phím mũi tên trên bàn phím để điều khiển siêu xe
 | **`←` / `→`** | **Chuyển làn** | Đánh lái sang trái hoặc phải (cẩn thận va chạm!). |
 
 🏆 **Mục tiêu chiến thắng:** Hãy là người đầu tiên cán đích ở mốc **4000.0** hoặc trở thành **kẻ sống sót cuối cùng** trên đường đua tử thần này!
-
-## 📂 Cấu trúc dự án
-
-```text
-📦 src/racinggame
- ┣ 📜 GameServer.java      # Máy chủ: Xử lý logic, va chạm, quản lý Client
- ┣ 📜 GameClientGUI.java   # Máy khách: Giao diện game, bắt sự kiện bàn phím
- ┣ 📜 GameState.java       # Lưu trữ "ảnh chụp" toàn bộ trạng thái màn chơi
- ┣ 📜 CarState.java        # Quản lý tọa độ, tốc độ, trạng thái sống/chết của xe
- ┗ 📜 Obstacle.java        # Định nghĩa các chướng ngại vật sinh ra ngẫu nhiên
-
 
